@@ -1,0 +1,20 @@
+const { EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType } = require("discord.js")
+
+module.exports = {
+    name: "ping",
+    options: [{
+        name: "user",
+        type: ApplicationCommandOptionType.User,
+        description: "Provide the user.",
+        required: true
+    }], // Optional
+    type: ApplicationCommandType.ChatInput,
+    description: "Ping users yes",
+    guilds: ["1013568585894985758"], // Optional (Makes it a guild cmd in the provided Guild IDs)
+    run: async(client, interaction) => {
+        const user = interaction.options.getUser("user")
+        interaction.reply({
+            content: `Get ponged <@${user.id}> lol`
+        })
+    }
+}
